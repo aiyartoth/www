@@ -3,38 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <title>cookie分析</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
-
+<!--
+demo学习参考资料网址.
+http://www.cnblogs.com/lyzg/p/6067766.html
+http://www.cnblogs.com/swing07/p/5715824.html
+-->
+<button class="btn btn-info" id="btn1">发送Ajax请求</button>
 <script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script>
-$(function(){
-    $.ajax({
-//        url:"./server.php",
-        url:"http://local.git.com/demo/cookie/server.php",
-        data:{
-            name:"local user",
-            age:"18"
-        },
-        dataType:"json",
-        success:function (response) {
-            console.log("--success--");
-            console.log(typeof response);
-            console.log(response);
-            console.log("----");
-        },
-        error:function (xhr,textStatus,thrownMsg) {
-            console.log("--error--");
-            console.log(xhr);
-            console.log(textStatus);
-            console.log(thrownMsg);
-            console.log("----");
-        },
-        complete:function (xhr) {
-            console.log("--conplete--");
+    $(function () {
+        $.ajax({
+            url: "./server.php",
+//        url:"http://local.git.com/demo/cookie/server.php",
+            data: {
+                name: "local user",
+                age: "18"
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log("--success--");
+                console.log(typeof response);
+                console.log(response);
+                console.log("----");
+            },
+            error: function (xhr, textStatus, thrownMsg) {
+                console.log("--error--");
+                console.log(xhr);
+                console.log(textStatus);
+                console.log(thrownMsg);
+                console.log("----");
+            },
+            complete: function (xhr) {
+                console.log("--conplete--");
+            }
+        });
+        $("#btn1").on("click", function (event) {
+            requestServer({
+                url: "./server.php",
+                data: {
+                    "name": "测试",
+                    "sex": "man"
+                }
+            }, function (response) {
+                console.log(response);
+            })
+        });
+
+        function requestServer(options, success, error, complete) {
+            var params = $.extend({
+                dataType: "json"
+            }, options, {
+                success: success,
+                error: error,
+                complete: complete
+            });
+            return $.ajax(params);
         }
+
+        var demo = {
+            "historyRadioList": [{
+                "index": 1,
+                "rid": "1200000000094",
+                "rname": "经典金曲.fm",
+                "playDate": "2017-07-26 16:21:41"
+            }, {"index": 0, "rid": "1200000000162", "rname": "搞笑.fm", "playDate": "2017-07-26 16:21:41"}, {
+                "index": 4,
+                "rid": "1200000000093",
+                "rname": "流行经典.fm",
+                "playDate": "2017-07-26 14:56:37"
+            }, {"index": 2, "rid": "1200000000164", "rname": "情感.fm", "playDate": "2017-07-26 14:55:29"}, {
+                "index": 3,
+                "rid": "1200000000200",
+                "rname": "汽车.fm",
+                "playDate": "2017-07-26 14:47:52"
+            }, {"index": 14, "rid": "1200000000203", "rname": "科技.fm", "playDate": "2017-07-26 14:33:31"}, {
+                "index": 13,
+                "rid": "1200000000241",
+                "rname": "生活健康.fm",
+                "playDate": "2017-07-26 14:33:30"
+            }, {"index": 12, "rid": "1200000000253", "rname": "娱乐明星.fm", "playDate": "2017-07-26 14:33:14"}, {
+                "index": 11,
+                "rid": "1200000000229",
+                "rname": "综合.fm",
+                "playDate": "2017-07-26 14:33:12"
+            }, {"index": 10, "rid": "1200000000228", "rname": "财经.fm", "playDate": "2017-07-26 14:33:10"}, {
+                "index": 9,
+                "rid": "1200000000238",
+                "rname": "亲子.fm",
+                "playDate": "2017-07-26 14:33:09"
+            }, {"index": 8, "rid": "1200000000106", "rname": "欧美经典.fm", "playDate": "2017-07-26 14:33:07"}, {
+                "index": 7,
+                "rid": "1200000000185",
+                "rname": "相声.fm",
+                "playDate": "2017-07-26 14:33:06"
+            }, {"index": 6, "rid": "1200000000088", "rname": "年轻流行.fm", "playDate": "2017-07-26 14:33:04"}, {
+                "index": 5,
+                "rid": "1200000000175",
+                "rname": "脱口秀.fm",
+                "playDate": "2017-07-26 14:33:01"
+            }]
+        };
+
     });
-});
 </script>
 </body>
 </html>
