@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie分析</title>
+</head>
+<body>
+
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script>
+$(function(){
+    $.ajax({
+//        url:"./server.php",
+        url:"http://local.git.com/demo/cookie/server.php",
+        data:{
+            name:"local user",
+            age:"18"
+        },
+        dataType:"json",
+        success:function (response) {
+            console.log("--success--");
+            console.log(typeof response);
+            console.log(response);
+            console.log("----");
+        },
+        error:function (xhr,textStatus,thrownMsg) {
+            console.log("--error--");
+            console.log(xhr);
+            console.log(textStatus);
+            console.log(thrownMsg);
+            console.log("----");
+        },
+        complete:function (xhr) {
+            console.log("--conplete--");
+        }
+    });
+});
+</script>
+</body>
+</html>
