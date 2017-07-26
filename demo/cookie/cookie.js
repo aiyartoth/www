@@ -11,6 +11,18 @@ var cookie_method = {
         }
         return "";
     },
+    getAll: function () {
+        var all_cookie = document.cookie.split(";"),
+            result={};
+        for (var i = 0; i < all_cookie.length; i++) {
+            var item = all_cookie[i].split("=");
+            console.log(item);
+            if (item && item.length === 2) {
+                result[item[0]] =item[1];
+            }
+        }
+        return result;
+    },
     set: function (cname, cvalue, exdays) {
         //todo 设置cookie
         var d = new Date();

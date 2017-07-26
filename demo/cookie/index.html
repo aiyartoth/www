@@ -11,14 +11,58 @@ demo学习参考资料网址.
 http://www.cnblogs.com/lyzg/p/6067766.html
 http://www.cnblogs.com/swing07/p/5715824.html
 -->
+
 <button class="btn btn-info" id="btn1">发送Ajax请求</button>
+<form action="">
+    <div class="form-group">
+        <label for="cookie-name">cookie name:</label>
+        <input type="text" class="form-control" id="cookie-name" placeholder="cookie name">
+    </div>
+    <div class="form-group">
+        <label for="cookie-value">cookie value:</label>
+        <input type="text" class="form-control" id="cookie-value" placeholder="cookie value">
+    </div>
+</form>
+<button  class="btn btn-primary" id="add-cookie">添加cookie</button>
+<button  class="btn btn-primary" id="query-cookie">查询cookie</button>
+<button  class="btn btn-primary" id="query-all-cookie">查询全部cookie</button>
+<button  class="btn btn-primary" id="del-cookie">删除cookie</button>
+<div id="all-cookie-show"></div>
+<script type="text/html" id="all-cookie-show-template">
+    <table class="table table-bordered">
+        <tr>
+            <td colspan="3">全部cookie</td>
+        </tr>
+        <tr>
+            <td>#</td>
+            <td>CookieName</td>
+            <td>cookieValue</td>
+        </tr>
+        <% var count=1; %>
+        <% for(var key in result){ %>
+        <tr>
+            <td><%=(count++) %></td>
+            <td><%=key%></td>
+            <td><%=result[key]%></td>
+        </tr>
+        <% } %>
+    </table>
+</script>
+<button class="btn btn-info">添加cookie</button>
 <script src="../../node_modules/jquery/dist/jquery.js"></script>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="template-web.js"></script>
+<script src="cookie.js"></script>
 <script>
     $(function () {
+        var requestURL = "http://local.git.com/demo/cookie/server.php";
+//        var requestURL = "http://local2.git.com/demo/cookie/server.php";
+//        var requestURL = "http://local3.git.com/demo/cookie/server.php";
+
         $.ajax({
-            url: "./server.php",
+//            url: "./server.php",
 //        url:"http://local.git.com/demo/cookie/server.php",
+            url: requestURL,
             data: {
                 name: "local user",
                 age: "18"
@@ -43,7 +87,7 @@ http://www.cnblogs.com/swing07/p/5715824.html
         });
         $("#btn1").on("click", function (event) {
             requestServer({
-                url: "./server.php",
+                url: requestURL,
                 data: {
                     "name": "测试",
                     "sex": "man"
@@ -64,49 +108,25 @@ http://www.cnblogs.com/swing07/p/5715824.html
             return $.ajax(params);
         }
 
-        var demo = {
-            "historyRadioList": [{
-                "index": 1,
-                "rid": "1200000000094",
-                "rname": "经典金曲.fm",
-                "playDate": "2017-07-26 16:21:41"
-            }, {"index": 0, "rid": "1200000000162", "rname": "搞笑.fm", "playDate": "2017-07-26 16:21:41"}, {
-                "index": 4,
-                "rid": "1200000000093",
-                "rname": "流行经典.fm",
-                "playDate": "2017-07-26 14:56:37"
-            }, {"index": 2, "rid": "1200000000164", "rname": "情感.fm", "playDate": "2017-07-26 14:55:29"}, {
-                "index": 3,
-                "rid": "1200000000200",
-                "rname": "汽车.fm",
-                "playDate": "2017-07-26 14:47:52"
-            }, {"index": 14, "rid": "1200000000203", "rname": "科技.fm", "playDate": "2017-07-26 14:33:31"}, {
-                "index": 13,
-                "rid": "1200000000241",
-                "rname": "生活健康.fm",
-                "playDate": "2017-07-26 14:33:30"
-            }, {"index": 12, "rid": "1200000000253", "rname": "娱乐明星.fm", "playDate": "2017-07-26 14:33:14"}, {
-                "index": 11,
-                "rid": "1200000000229",
-                "rname": "综合.fm",
-                "playDate": "2017-07-26 14:33:12"
-            }, {"index": 10, "rid": "1200000000228", "rname": "财经.fm", "playDate": "2017-07-26 14:33:10"}, {
-                "index": 9,
-                "rid": "1200000000238",
-                "rname": "亲子.fm",
-                "playDate": "2017-07-26 14:33:09"
-            }, {"index": 8, "rid": "1200000000106", "rname": "欧美经典.fm", "playDate": "2017-07-26 14:33:07"}, {
-                "index": 7,
-                "rid": "1200000000185",
-                "rname": "相声.fm",
-                "playDate": "2017-07-26 14:33:06"
-            }, {"index": 6, "rid": "1200000000088", "rname": "年轻流行.fm", "playDate": "2017-07-26 14:33:04"}, {
-                "index": 5,
-                "rid": "1200000000175",
-                "rname": "脱口秀.fm",
-                "playDate": "2017-07-26 14:33:01"
-            }]
-        };
+        //cookie操作
+        $("#add-cookie").on("click", function () {
+            var cookie_name = $("#cookie-name").val();
+            var cookie_value = $("#cookie-value").val();
+            cookie_method.set(cookie_name, cookie_value, 1);
+            return false;
+        });
+        $("#query-all-cookie").on("click", function () {
+            var result = cookie_method.getAll();
+            console.log(result,result.length);
+            if (!$.isEmptyObject(result)) {
+                var html = template("all-cookie-show-template", {
+                    result: result
+                });
+                console.log(html);
+                $("#all-cookie-show").html(html);
+            }
+            return false;
+        });
 
     });
 </script>
