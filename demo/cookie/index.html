@@ -10,6 +10,8 @@
 demo学习参考资料网址.
 http://www.cnblogs.com/lyzg/p/6067766.html
 http://www.cnblogs.com/swing07/p/5715824.html
+服务端设置cookie后 空格被编码为+，然而js encodeURI，encodeURIComponent不能将加好解码成空格，
+处理方式可以 str.replace(/\+/g,"%20")将读取到的字符的+号先替换成%20，然后在encodeURIComponent。
 -->
 
 <button class="btn btn-info" id="btn1">发送Ajax请求</button>
