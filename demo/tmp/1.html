@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var H5=function () {
+        this.addPage=function () {
+            return this;
+        }
+        this.addComponent=function () {
+            return this;
+        }
+        function test() {
+            console.log('---',this);
+        }
+        test();
+    }
+    var h5=new H5();
+    console.log(h5.addPage());
+</script>
+</body>
+</html>
