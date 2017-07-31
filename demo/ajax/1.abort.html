@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Abort</title>
+</head>
+<body>
+
+<!--<script src="../../node_modules/jquery/dist/jquery.js"></script>-->
+<script src="jquery.min.js"></script>
+<script>
+    $(function () {
+        var req=$.ajax({
+            url:"./data.json",
+            data:"",
+            dataType:"json"
+        }).success(function (response) {
+
+        }).error(function (xhr,textStatus,thrownError) {
+            console.log(textStatus);
+        }).complete(function (response) {
+
+        });
+        req.abort();
+    });
+</script>
+</body>
+</html>
