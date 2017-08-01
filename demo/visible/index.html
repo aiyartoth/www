@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="test3" style="width: 0;height: 0"></div>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+$(function () {
+    var div_test=$("<div class='test'></div>");
+    var div_test2=div_test.clone();
+
+    div_test.css({
+        width:0,
+        height:0,
+        backgroundColor:"red",
+//        display:"none"
+    });
+    div_test2.css({
+        width:"100px",
+        height:"0"
+    });
+    div_test.appendTo($("body"));
+    div_test2.appendTo($("body"));
+
+    console.log(isVisible(div_test),isVisible(div_test2),isVisible($("#test3")));
+
+    function isVisible(jqNode) {
+        return jqNode.is(":visible");
+    }
+});
+</script>
+</body>
+</html>

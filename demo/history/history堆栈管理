@@ -1,0 +1,11 @@
+> 摘抄自:<http://www.cnblogs.com/accordion/p/5699372.html>
+
+1. 浏览器针对每个页面维护一个History栈。
+2. 执行pushState函数可压入设定的url至栈顶，同时修改当前指针；
+3. 当执行back操作时，history栈大小并不会改变（history.length不变），仅仅移动当前指针的位置；
+若当前指针在history栈的中间位置（非栈顶），此时执行pushState会改变history栈的大小。
+
+#### 总结pushState的规律：
+* 可发现当前指针在history栈顶部时执行pushState，会增加history栈大小；
+* 若current指针不在栈顶则会在当前指针所在位置添加项。
+* 执行back操作并不修改history栈大小，因此可以通过back和forward在当前大小的history栈中自由移动。
