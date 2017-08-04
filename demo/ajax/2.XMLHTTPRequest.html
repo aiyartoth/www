@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //创建XMLHttpRequest对象
+    var xhr;
+    if(window.XMLHttpRequest){
+        // ie7+,firefox,chrome,opera,safari
+        xhr=new XMLHttpRequest();
+    }else{
+        // ie5、ie6
+        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    //XMLHttpRequest向服务器发送请求
+    // GET
+    xhr.open("GET","./server.php?name=小明&age=18",true);
+//    xhr.send();
+     xhr.send();
+    //POST
+    /*xhr.open("POST","./server.php",true);
+//    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//    xhr.send("name=小明&age=18");
+    xhr.send();*/
+
+    xhr.onreadystatechange=function () {
+        console.log("-----------");
+        console.log(xhr.readyState,xhr.status);
+    };
+    
+    /*var demo_deata={
+        "name":"小明",
+        "age":18
+    },demo_str="";
+    for(var i in demo_deata){
+        demo_str+=i+"="+demo_deata[i]+"&";
+    }
+    console.log(demo_str.substring(0,demo_str.length-1));*/
+
+</script>
+</body>
+</html>
