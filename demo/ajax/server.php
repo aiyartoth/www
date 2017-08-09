@@ -10,7 +10,7 @@ $g = $_GET;
 $p = $_POST;
 $s = $_SESSION;
 $r = array(
-    "msg" > "服务器已经接受信息，并准备返回"
+    "msg" => "服务器已经接受信息，并准备返回"
 );
 echo json_encode(array(
     "errcode" => 0,

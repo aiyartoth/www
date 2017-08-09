@@ -18,18 +18,20 @@
 
     //XMLHttpRequest向服务器发送请求
     // GET
-    xhr.open("GET","./server.php?name=小明&age=18",true);
+//    xhr.open("GET","./server.php?name=小明&age=18",true);
 //    xhr.send();
-     xhr.send();
+//     xhr.send();
     //POST
-    /*xhr.open("POST","./server.php",true);
+    xhr.open("POST","./server.php",true);
 //    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-//    xhr.send("name=小明&age=18");
-    xhr.send();*/
+    xhr.send("name=小明&age=18");
+//    xhr.send();
 
     xhr.onreadystatechange=function () {
         console.log("-----------");
+        console.dir(xhr);
         console.log(xhr.readyState,xhr.status);
+        console.log(xhr.responseXML,xhr.responseText);
     };
     
     /*var demo_deata={

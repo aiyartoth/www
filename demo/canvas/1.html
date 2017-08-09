@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用Canvas绘图</title>
+</head>
+<body>
+
+
+<canvas id="drawing" width="200" height="200">A drawing of somethings.</canvas>
+<canvas id="drawing2" width="200" height="200">A drawing of somethings.</canvas>
+<canvas id="drawing3" width="200" height="200">A drawing of somethings.</canvas>
+<canvas id="drawing4" width="200" height="200">A drawing of somethings.</canvas>
+<div id="new-draw"></div>
+<script src="canvas.plugin.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    var drawing=document.getElementById("drawing");
+    if(drawing.getContext){
+        var context=drawing.getContext("2d");
+//        context.strokeStyle="red";
+
+        /*
+        * 1.fill
+        * */
+        context.fillStyle="#0000ff";
+        context.fillRect(10,10,50,50);
+
+        context.fillStyle="rgba(0,0,255,0.5)";
+        context.fillRect(35,35,50,50);
+//        console.dir(drawing);
+        //取得图像的数据URI
+        /*        var imgURI=drawing.toDataURL("image/png");
+
+                //显示图像
+                var image=document.createElement("img");
+                image.src=imgURI;
+                document.body.appendChild(image);*/
+    }
+
+    /*
+    * 2.stroke
+    * */
+    var drawing2=document.getElementById("drawing2");
+    var context2=drawing2.getContext("2d");
+    context2.strokeStyle="#0000ff";
+    context2.strokeRect(10,10,50,50);
+    context2.strokeStyle="rgba(0,0,255,0.5)";
+    context2.strokeRect(35,35,50,50);
+
+    //    var drawing3=document.getElementById("drawing3");
+    //    var context3=drawing3.getContext("2d");
+    /*
+    * 3.clearRect
+    * */
+    createContext("drawing3",function (d,c) {
+        c.fillStyle="#ff0000";
+        c.fillRect(10,10,40,40);
+        c.fillStyle="rgba(255,0,0,0.5)";
+        c.fillRect(30,30,40,40);
+        c.clearRect(35,35,10,10);
+    });
+
+    /*
+    * 4.绘制路径
+    * */
+    var draw4=new CanvasDraw("drawing4");
+    draw4.context.beginPath();
+    draw4.context.moveTo(0,0);
+    draw4.context.lineTo(200,200);
+    draw4.context.stroke();
+    draw4.fillRect("#ff0000",10,10,40,40)
+        .fillRect("rgba(255,0,0,0.5)",30,30,40,40);
+    console.log(draw4.context.isPointInPath(110,100));
+
+    //    var draw4=new CanvasDraw("drawing4");
+    var draw5=new CanvasDraw();
+    //绘制外圆
+    draw5.context.arc(100,100,99,0,2*Math.PI,false);
+    draw5.context.moveTo(194,100);
+    draw5.context.arc(100,100,94,0,2*Math.PI,false);
+    draw5.context.moveTo(100,100);
+    draw5.context.lineTo(100,15);
+    draw5.context.moveTo(100,100);
+    draw5.context.lineTo(35,100);
+    console.log(draw5.context.isPointInPath(110,100));
+    draw5.context.stroke();
+
+
+    function createContext(canvasId,callback) {
+        var drawing=document.getElementById(canvasId);
+        var context=drawing.getContext("2d");
+        callback?callback(drawing,context):"";
+    }
+
+</script>
