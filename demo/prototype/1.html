@@ -13,11 +13,25 @@
     }
     Person.prototype.init=function () {
         console.log("This is init Person;")
-    }
+    };
+    console.dir(Person);
+    console.dir({});
+//    console.log(Person.__proto__);
+//    console.log(Person.prototype);
+//    console.log(Person.__proto__===Person.prototype.__proto__);
+/*    Person.prototype.aa=11;
+    Person.bb=22;
 
-    new Person().init();
-    (new Person()).init();
-
+    /!*new Person().init();
+    (new Person()).init();*!/
+    var xiaoming=new Person();
+    console.log(Person.hasOwnProperty("aa"));
+    console.log(Person.hasOwnProperty("bb"));
+    console.dir(xiaoming);
+    console.log(xiaoming.isPrototypeOf(Person));
+    console.log(xiaoming.isPrototypeOf(Person.prototype));
+    console.log(Person.isPrototypeOf(xiaoming));
+    console.log(Person.prototype.isPrototypeOf(xiaoming));*/
 </script>
 
 </body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Polygon(sides) {
+        console.log(this);
+        if(this instanceof Polygon){
+//        if(true){
+            this.sides=sides;
+            this.getArea=function () {
+                return 0;
+            }
+        }else{
+            return new Polygon(sides);
+        }
+    }
+    function Rectangle(width,height) {
+        var _this=this;
+        Polygon.call(this,2);
+        this.width=width;
+        this.height=height;
+        this.getArea=function () {
+            return this.width*this.height;
+        }
+    }
+    var rect=new Rectangle(5,10);
+    Rectangle.prototype=new Polygon();
+
+    var rect=new Rectangle(5,10);
+console.log(rect.__proto__)
+
+</script>
+</body>
+</html>

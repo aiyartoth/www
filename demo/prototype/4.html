@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Parent() {
+
+    }
+    function Child() {
+        console.log("inner",this instanceof Parent)
+    }
+
+//    console.log(1, Child instanceof Parent);
+//    Child=new Parent();
+    Child.prototype=new Parent();
+//    console.log(Child);
+//    console.log(2,Child instanceof Parent);
+    var bb=new Child();
+//    bb.__proto__=Child.prototype;
+    console.dir(Child)
+    console.log(bb);
+    /*var child={};
+    console.log(1,child instanceof Parent);
+    child.__proto__=Parent.prototype;
+    console.log(2,child instanceof Parent);*/
+</script>
+</body>
+</html>

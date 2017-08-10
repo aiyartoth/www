@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="server.php" method="post" name="loginForm">
+    <input type="text" name="username">
+    <input type="text" name="passwd" >
+    <input type="reset" value="重置">
+    <input type="submit" value="提交">
+</form>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+       $("input[type=submit]").click(function () {
+           var formObj=$("form[name=loginForm]");
+           console.dir(formObj);
+           return false;
+       });
+    });
+</script>
+</body>
+</html>

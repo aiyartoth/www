@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数附加属性验证</title>
+</head>
+<body>
+<script>
+    var fn=function () {
+        console.log("function fn inner");
+    };
+    fn.a=100;
+    fn.b=function () {
+        console.log("function fn.b inner");
+    };
+    fn.c={
+        name:"function fn.c name",
+        age:18
+    };
+    console.dir(fn);
+    console.log(fn.c)
+    fn();
+</script>
+</body>
+</html>
