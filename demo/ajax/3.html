@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    var BASE_URL = "https://app.sgmlink.com:3229";
+    var GET_SEARCH_DEALER_ACTION = BASE_URL + "/service/mychevyvehicle/rest/api/public/dealerInfo/searchDealerByLat";
+
+    var param = {
+        "brandId": 1,
+        "latitude": 31.188656,
+        "longitude": 121.413794,
+        "scope": "3",
+        "resultSize": "5",
+        "vin": 84249385
+    };
+    $.ajax({
+        url: GET_SEARCH_DEALER_ACTION,
+        headers: {
+//            "Accept": "application/json, text/plain, */*",
+            "Content-Type":"application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        type: "post",
+        data: JSON.stringify(param),
+        dataType: "json",
+        timeout: 20000,
+        success: function (response) {
+            console.dir(response);
+        },
+        error: function (xhr, textStatus, thrownError) {
+            console.dir("-----error-----");
+            console.log(xhr);
+            console.log(textStatus);
+            console.log(thrownError);
+        }
+    });
+
+</script>
+</body>
+</html>

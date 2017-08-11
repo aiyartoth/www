@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Filters</title>
+</head>
+<body>
+<img src="./demo_small.png" alt="" id="demo_tu">
+<script>
+    /*var test_img = new Image();
+    test_img.src = "./demo_small.png";
+    console.dir(test_img);*/
+    var test_img=document.getElementById("demo_tu");
+    var Filters = {};
+    Filters.getPixels = function (img) {
+        var c = this.getCanvas(img.width, img.height);
+        var ctx = c.getContext("2d");
+        ctx.drawImage(img, 0,0);
+        return ctx.getImageData(0, 0, c.width, c.height);
+    };
+    Filters.getCanvas = function (w, h) {
+        var c = document.createElement("canvas");
+        c.width = w;
+        c.height = h;
+        return c;
+    };
+
+    Filters.filterImage = function (filter, image, var_ags) {
+        var args = [this.getPixels(image)];
+        for (var i = 2; i < arguments.length; i++) {
+            args.push(arguments[i]);
+        }
+        return filter.apply(null, args);
+    };
+    Filters.grayscale = function (pixels, args) {
+        var d = pixels.data;
+        for (var i = 0; i < d.length; i += 4) {
+            var r = d[i];
+            var g = d[i + 1];
+            var b = d[i + 2];
+            var v = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            d[i] = d[i + 1] = d[i + 2] = v
+        }
+        return pixels;
+    };
+
+    test_img.onload=function () {
+        var newImageData = Filters.filterImage(Filters.grayscale, test_img),
+            showCanvas = Filters.getCanvas(test_img.width, test_img.height),
+            showCanvasCtx = showCanvas.getContext("2d");
+        showCanvasCtx.putImageData(newImageData,0,0);
+        console.log(newImageData);
+        document.body.appendChild(showCanvas);
+    }
+
+
+</script>
+</body>
+</html>

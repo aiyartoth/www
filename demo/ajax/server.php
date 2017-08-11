@@ -5,6 +5,7 @@
  * Date: 2017/8/3
  * Time: 10:29
  */
+header("");
 session_start();
 $g = $_GET;
 $p = $_POST;

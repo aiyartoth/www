@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function test(a,b) {
+        console.dir(arguments);
+        console.dir(arguments.callee)
+        console.dir(arguments.caller)
+    }
+    test(1,2);
+
+    (function () {
+        test(2,3)
+    }());
+
+    function outer() {
+        test(4,5);
+    }
+    outer();
+</script>
+</body>
+</html>
