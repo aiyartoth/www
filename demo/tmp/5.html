@@ -17,6 +17,7 @@
         }
         .ege{
             line-height: 30px;
+            pointer-events: none;
         }
         .ege1{
             color: green;
@@ -34,6 +35,28 @@
 <!-- /*弹窗注入层*/ -->
 <div id="popup">
 </div>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        $(".ege").click(function () {
+            console.log(4);
+            return false;
+        });
+
+        $(".ege").on("click",function () {
+            console.log(1);
+            return false;
+        });
+        $(".ege").on("click",function () {
+            console.log(2);
+            return false;
+        });
+        $(".ege").on("click",function () {
+            console.log(3);
+            return false;
+        });
+    });
+</script>
 </body>
 
 </html>
