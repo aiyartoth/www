@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 200px;
+            height: 200px;
+        }
+        #box1 {
+            background: red;
+            z-index: 100;
+        }
+        #box2{
+            background: blue;
+            z-index: 101;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box1">1</div>
+<div class="box" id="box2">2</div>
+<button id="delBtn2">删除BTN2</button>
+<button id="addBtn2">增加BTN2</button>
+<button id="showBtn2">显示BTN2</button>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        /*console.log($("#box1").is(":visible"));
+        console.log($("#box2").is(":visible"));*/
+        /*var ab=$("#box2");
+        $("#delBtn2").click(function () {
+            $("#box2").remove();
+            return false;
+        });
+        $("#addBtn2").click(function () {
+            $("body").append("<div class=\"box\" id=\"box2\"></div>");
+            return false;
+        });
+        $("#showBtn2").click(function () {
+           console.log(ab);
+            return false;
+        });*/
+        /*for(var i=0;i<10;i++){
+            (function (i) {
+                setTimeout(function () {
+                    console.log("inner:"+i)
+                },0);
+            }(i));
+            setTimeout(function () {
+                console.log("no:"+i)
+            },0);
+        }*/
+    });
+</script>
+</body>
+</html>

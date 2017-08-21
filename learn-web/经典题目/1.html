@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //1.N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？
+    (function () {
+        /*这个问题本质上是斐波那契数列，
+        假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；
+        如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。
+        如果有大于2级的n级台阶，那么假如第一次跳一级台阶，剩下还有n-1级台阶，有f(n-1)种跳法，假如第一次条2级台阶，剩下n-2级台阶，有f(n-2)种跳法。
+        这就表示f(n)=f(n-1)+f(n-2)。*/
+        function compute(num) {
+            if(num <= 0) return 0;
+            if(num == 1) return 1;
+            if(num == 2) return 2;
+            return compute(num-1)+compute(num-2);
+        }
+        console.log(compute(10));
+    }());
+
+
+</script>
+</body>
+</html>
