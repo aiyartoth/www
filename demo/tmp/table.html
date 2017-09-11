@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        .d-table{
+            /*display: table;*/
+            vertical-align: middle;
+            height: 100px;
+            width: 300px;
+        }
+        .d-table:before,.d-table:after{
+            display: table;
+            content: " ";
+        }
+        .d-table-row{
+            width: 200px;
+            display: table-row;
+        }
+        .d-table-cell{
+            display: table-cell;
+            vertical-align: inherit;
+        }
+        .fl{
+            float: left;
+            vertical-align: inherit;
+        }
+        body{
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="d-table">
+        <!--<div class="fl">左侧浮动</div>-->
+        <div class="d-table-cell">表格内部文字</div>
+    <!--<div class="d-table-row">
+        <div class="d-table-cell">第二行表格文字</div>
+        <div class="d-table-cell">第二行表格文字</div>
+    </div>-->
+</div>
+</body>
+</html>
