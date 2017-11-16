@@ -1,0 +1,4 @@
+.importCommonCSS{
+    display: flex;
+    transform: translate(-50%,-50%);
+}
