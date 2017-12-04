@@ -10,8 +10,6 @@
                 <router-link class="link" :to="'/bd_map'">bd_map</router-link>
             </li>
         </ul>
-
-
         <router-view></router-view>
 
     </div>
@@ -37,6 +35,8 @@
         text-decoration none
         font-weight bold
         color rebeccapurple
+    a
+        color red
 
 </style>
 <script>
