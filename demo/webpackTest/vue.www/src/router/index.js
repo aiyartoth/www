@@ -16,6 +16,16 @@ export default new Router({
       path: '/List',
       name: 'menu-nav',
       component: resolve=>require(['../views/menu_list.vue'],resolve)
+    },
+    {
+      path: '/Notes',
+      name: 'notes',
+      component: resolve=>require(['../views/notes.vue'],resolve)
+    },
+    {
+      path: '*',
+      name: 'index',
+      component: resolve=>require(['../views/Home.vue'],resolve)
     }
   ]
 })

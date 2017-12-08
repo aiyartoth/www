@@ -44,7 +44,6 @@ export default {
         progress++;
       }
       _this.showMessage = str.substring(0, progress);
-      printLog(_this.showMessage);
       if (progress >= str.length) {
         clearInterval(clock);
         _this.isComplete = true;

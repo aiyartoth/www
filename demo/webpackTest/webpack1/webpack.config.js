@@ -11,7 +11,7 @@ module.exports = {
     entry: path.join(__dirname, "src/js/main.js"),
     output: {
         path: BUILD_PATH,
-        filename: "[name].js"
+        filename: "[name]-[hash:6].js"
     },
     devServer: {
         inline: true,
