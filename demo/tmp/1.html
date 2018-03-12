@@ -3,39 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            background: black;
-        }
-        div{
-            color: white;
-            font-size: 16px;
-        }
-    </style>
 </head>
 <body>
-<div class="bot_content_FM white_small_font_kaolaFM">CopyRight &copy; 2015 - 2017 AutoRadio,All Right Reserved</div>
-<div class="bot_content_FM white_small_font_kaolaFM">CopyRight © 2015 - 2017 AutoRadio,All Right Reserved</div>
-<div class="bot_content_FM white_small_font_kaolaFM">CopyRight &#169; 2015 - 2017 AutoRadio,All Right Reserved</div>
 <script>
-    /*var H5=function () {
-        this.addPage=function () {
-            return this;
-        }
-        this.addComponent=function () {
-            return this;
-        }
-        function test() {
-            console.log('---',this);
-        }
-        test();
+    /* var p = {
+         _name: "xiaoming",
+         get name() {
+             return this._name;
+         },
+         set name(a) {
+             this._name = a.firstName + "·" + a.lastName;
+         }
+     }*/
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
     }
-    var h5=new H5();
-    console.log(h5.addPage());*/
+
+    Person.prototype.headCount = 1;
+    var p1 = new Person("cj", 22);
+    var p2 = new Person("xioaming", 33);
 </script>
 </body>
 </html>
